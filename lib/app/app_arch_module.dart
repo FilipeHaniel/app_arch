@@ -1,4 +1,5 @@
 import 'package:app_arch/app/app_arch_page.dart';
+import 'package:app_arch/app/core/ui/theme/app_arch_theme.dart';
 import 'package:flutter/material.dart';
 
 class AppArchModule extends StatelessWidget {
@@ -9,10 +10,7 @@ class AppArchModule extends StatelessWidget {
     return MaterialApp(
       title: 'App Arch',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppArchTheme.theme,
       home: const AppArchPage(),
     );
   }

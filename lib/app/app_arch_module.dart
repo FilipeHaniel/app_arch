@@ -1,6 +1,7 @@
 import 'package:app_arch/app/core/constants/routes_url.dart';
 import 'package:app_arch/app/core/ui/theme/app_arch_theme.dart';
 import 'package:app_arch/app/presentation/login/login_page.dart';
+import 'package:app_arch/app/presentation/register/register_page.dart';
 import 'package:app_arch/app/presentation/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,7 @@ class AppArchModule extends StatelessWidget {
       routes: {
         RoutesUrl.splash: (context) => const SplashPage(),
         RoutesUrl.login: (context) => const LoginPage(),
+        RoutesUrl.register: (context) => const RegisterPage(),
       },
     );
   }

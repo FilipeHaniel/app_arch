@@ -1,22 +1,21 @@
-import 'package:app_arch/app/core/constants/routes_url.dart';
 import 'package:app_arch/app/core/ui/widgets/app_arch_button.dart';
 import 'package:app_arch/app/core/ui/widgets/app_arch_input.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'login',
+          'Register',
           style: TextStyle(color: Colors.black),
         ),
       ),
@@ -39,8 +38,14 @@ class _LoginPageState extends State<LoginPage> {
                   isObscure: true,
                 ),
                 const SizedBox(height: 20),
+                AppArchInput(
+                  label: 'Nome',
+                  controller: TextEditingController(),
+                  isObscure: false,
+                ),
+                const SizedBox(height: 20),
                 AppArchButton(
-                  text: 'Entrar',
+                  text: 'Cadastrar',
                   action: () {},
                 ),
                 const SizedBox(height: 20),
@@ -49,16 +54,15 @@ class _LoginPageState extends State<LoginPage> {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: 'Não é cadastrado?  ',
+                          text: 'Ja é cadastrado?  ',
                         ),
                         TextSpan(
-                          text: 'Cadastre-se aqui',
+                          text: 'Entrar aqui',
                         ),
                       ],
                     ),
                   ),
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(RoutesUrl.register),
+                  onTap: () => Navigator.of(context).pop(),
                 ),
               ],
             ),

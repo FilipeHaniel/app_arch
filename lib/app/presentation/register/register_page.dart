@@ -10,6 +10,12 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final _formKey = GlobalKey<FormState>();
+
+  final _email = TextEditingController();
+  final _password = TextEditingController();
+  final _name = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,24 +29,25 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Form(
+            key: _formKey,
             child: Column(
               children: [
                 const SizedBox(height: 48),
                 AppArchInput(
                   label: 'E-mail',
-                  controller: TextEditingController(),
+                  controller: _email,
                   isObscure: false,
                 ),
                 const SizedBox(height: 20),
                 AppArchInput(
                   label: 'Senha',
-                  controller: TextEditingController(),
+                  controller: _password,
                   isObscure: true,
                 ),
                 const SizedBox(height: 20),
                 AppArchInput(
                   label: 'Nome',
-                  controller: TextEditingController(),
+                  controller: _name,
                   isObscure: false,
                 ),
                 const SizedBox(height: 20),

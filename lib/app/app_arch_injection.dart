@@ -5,6 +5,7 @@ import 'package:app_arch/app/features/data/repositories/auth/auth_repository_imp
 import 'package:app_arch/app/features/domain/repositories/auth/auth_repository.dart';
 import 'package:app_arch/app/features/domain/usecases/auth/auth_usecase.dart';
 import 'package:app_arch/app/features/domain/usecases/auth/auth_usecase_impl.dart';
+import 'package:app_arch/app/presentation/register/bloc/register_controller.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt getIt = GetIt.instance;
@@ -21,5 +22,7 @@ class AppArchInjection {
 
     getIt.registerLazySingleton<AuthUsecase>(
         () => AuthUsecaseImpl(authRepository: getIt()));
+
+    getIt.registerLazySingleton(() => RegisterController(authUsecase: getIt()));
   }
 }

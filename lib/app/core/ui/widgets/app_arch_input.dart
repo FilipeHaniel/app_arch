@@ -12,8 +12,8 @@ class AppArchInput extends StatefulWidget {
     required this.controller,
     required this.isObscure,
     this.validator,
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<AppArchInput> createState() => _AppArchInputState();
@@ -42,7 +42,7 @@ class _AppArchInputState extends State<AppArchInput> {
                   secretText ? FeatherIcons.eyeOff : FeatherIcons.eye,
                   color: Colors.grey[700],
                 ),
-                onPressed: () => setState(() => secretText = !secretText),
+                onPressed: toggleVisibility,
               )
             : null,
         border: OutlineInputBorder(
@@ -55,5 +55,9 @@ class _AppArchInputState extends State<AppArchInput> {
         labelText: widget.label,
       ),
     );
+  }
+
+  void toggleVisibility() {
+    setState(() => secretText = !secretText);
   }
 }

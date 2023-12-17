@@ -73,3 +73,22 @@ O padrão factory permite com que os desenvolvedores criem objetos que podem ser
 #### Referência
 
  - [Flutter TDD Clean Architecture (Arquitetura Limpa): #1 Pra quê?](https://www.youtube.com/watch?v=odr59ZAx-IU&list=PLnFA4SZ9y0T5FA2dFdNh6NLD6Rm6GB6x7)
+
+## S.O.L.I.D
+
+É a junção das inicias de cinco conceitos que, trazem para o código: facilidade de entendimento, reaproveitamento, facilidade de refatoração, testabilidade e poucos bugs
+
+### São eles
+- S (single responsabilities): Responsabilidade única, quer dizer que uma classe deve tratar apenas de um assunto.
+
+- O (open/close): A classe deve ser fechada para modificações e aberta para extensões.
+
+- L (Liskov substitution): Os objetos de classes derivadas podem ser substituidas por objetos de classe pai.
+
+- I (interface segregation): Principio que nos leva a quebrar uma interface grande em outras menores.
+
+- D (dependency inversion): Esse principio nos diz que,as classes que dependem de outras, devem depender da abstração ao invés da classe concreta.
+
+#### Referência
+
+ - [Flutter TDD Clean Architecture (Arquitetura Limpa): #1 Pra quê?](https://www.youtube.com/watch?v=odr59ZAx-IU&list=PLnFA4SZ9y0T5FA2dFdNh6NLD6Rm6GB6x7)

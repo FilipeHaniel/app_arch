@@ -91,4 +91,4 @@ O padrão factory permite com que os desenvolvedores criem objetos que podem ser
 
 #### Referência
 
- - [Flutter TDD Clean Architecture (Arquitetura Limpa): #1 Pra quê?](https://www.youtube.com/watch?v=odr59ZAx-IU&list=PLnFA4SZ9y0T5FA2dFdNh6NLD6Rm6GB6x7)
+ - [AULÃO - Tudo sobre arquitetura limpa no Flutter](https://www.youtube.com/watch?v=5NAmPRkLgMk&t)

@@ -14,3 +14,62 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+# Qualidade de código
+
+Pontos que buscam melhorar a qualidade dos aplicativos, para serem aplicados no código
+
+
+## Clean Code
+
+O principal objetivo do clean code é produzir código legivel, fácil de dar manutenção e que busque reduzir a complexidade
+
+### Funcionalidades
+
+- Nomes significativos
+- Evitar comentários
+- Manter estilo de identação
+- Evitar códigos duplicados
+
+#### Referência
+
+ - [Aprenda como Escrever Código Limpo com o CLEAN CODE](https://www.youtube.com/watch?v=6za9ZWZzWdA)
+
+## Design Pattern
+
+Tem como objetivo oferecer abordagens que ajudam os desenvolvedores a criar sistemas mais flexiveis, reutilizáveis e fáceis de Manter
+
+- Padrões de Criação: Lidam com a criação de objetos. Exemplos: Singleton, Factory Method, Abstract Factory, Builder, etc.
+
+- Padrões de Estrutura: Focam na composição de classes e objetos para formar estruturas maiores. Exemplos: Adapter, Bridge, Decorator, Facade, etc.
+
+- Padrões Comportamentais: Tratam de como os objetos interagem e distribuem responsabilidades. Exemplos: Observer, Strategy, Command, Iterator, etc.
+
+#### Singleton
+O padrão singleton faz com que determinado obvjeto tenha apenas uma instância, em que é utilizado globalmente pelo sistema
+
+#### Referência
+
+ - [Singleton Pattern aplicado no mundo real, criando uma conexão com o banco de dados SQLite](https://www.youtube.com/watch?v=Yx-45aj4sBI)
+
+#### Factory
+O padrão factory permite com que os desenvolvedores criem objetos que podem serem recriados a partir deles
+
+#### Referência
+
+ - [Criando uma fábrica de AlertDialog e como abrir um Dialog sem contexto](https://www.youtube.com/watch?v=oy9_7fEiBl4&t)
+
+## Clean architecture
+
+É um conceito que nos trás a idéia de separação do projetos em camadas para torna-las mais idependentes e desacopladas, em que as camadas mais centrais contem as regras de negócio e as pais externas as implementações
+
+- Data: data source, repository, mapper.
+
+- Domain: entities, repository, usecases.
+
+- Presentation: widgets, secreens, regras de estado.
+
+#### Referência
+
+ - [Flutter TDD Clean Architecture (Arquitetura Limpa): #1 Pra quê?](https://www.youtube.com/watch?v=odr59ZAx-IU&list=PLnFA4SZ9y0T5FA2dFdNh6NLD6Rm6GB6x7)

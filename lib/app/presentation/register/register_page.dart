@@ -5,7 +5,7 @@ import 'package:app_arch/app/features/domain/entities/user/user_entity.dart';
 import 'package:app_arch/app/presentation/register/bloc/register_controller.dart';
 import 'package:app_arch/app/presentation/register/bloc/register_event.dart';
 import 'package:app_arch/app/presentation/register/bloc/register_state.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -36,42 +36,43 @@ class _RegisterPageState extends State<RegisterPage> {
     _password.dispose();
     _name.dispose();
 
+    _controller.dispose();
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Register',
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: StreamBuilder<RegisterState>(
-              stream: _controller.outputRegister,
-              builder: (context, state) {
-                if (state.data is RegisterStateSuccess) {
-                  Navigator.of(context).pop();
-                }
+    return StreamBuilder<RegisterState>(
+        stream: _controller.outputRegister,
+        builder: (context, snapshot) {
+          if (snapshot.data is RegisterStateSuccess) {
+            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+              AsukaSnackbar.success('Usuário cadastrado com sucesso').show();
 
-                if (state.data is RegisterStateError) {
-                  Fluttertoast.showToast(
-                    msg: 'Erro ao realizar cadastro',
-                    toastLength: Toast.LENGTH_SHORT,
-                    gravity: ToastGravity.TOP,
-                    backgroundColor: Colors.red,
-                    textColor: Colors.white,
-                    fontSize: 16.0,
-                  );
+              Navigator.of(context).pop();
+            });
+          }
 
-                  Navigator.of(context).pop();
-                }
+          if (snapshot.data is RegisterStateError) {
+            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+              AsukaSnackbar.alert('Falha ao logar no App').show();
 
-                return Form(
+              Navigator.of(context).pop();
+            });
+          }
+
+          return Scaffold(
+            appBar: AppBar(
+              title: const Text(
+                'Register',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            body: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Form(
                   key: _formKey,
                   child: Column(
                     children: [
@@ -130,10 +131,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ],
                   ),
-                );
-              }),
-        ),
-      ),
-    );
+                ),
+              ),
+            ),
+          );
+        });
   }
 }

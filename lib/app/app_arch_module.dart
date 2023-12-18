@@ -3,6 +3,7 @@ import 'package:app_arch/app/core/ui/theme/app_arch_theme.dart';
 import 'package:app_arch/app/presentation/login/login_page.dart';
 import 'package:app_arch/app/presentation/register/register_page.dart';
 import 'package:app_arch/app/presentation/splash/splash_page.dart';
+import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 
 class AppArchModule extends StatelessWidget {
@@ -13,6 +14,8 @@ class AppArchModule extends StatelessWidget {
     return MaterialApp(
       title: 'App Arch',
       debugShowCheckedModeBanner: false,
+      builder: Asuka.builder,
+      navigatorObservers: [Asuka.asukaHeroController],
       theme: AppArchTheme.theme,
       initialRoute: RoutesUrl.splash,
       routes: {

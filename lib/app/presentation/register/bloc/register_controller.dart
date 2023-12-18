@@ -36,4 +36,9 @@ class RegisterController {
       _outputRegisterController.add(RegisterStateError(exception: e));
     }
   }
+
+  void dispose() {
+    _inputRegiterController.close();
+    _outputRegisterController.close();
+  }
 }

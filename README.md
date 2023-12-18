@@ -1,31 +1,13 @@
-# app_arch
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-
 # Qualidade de código
 
-Pontos que buscam melhorar a qualidade dos aplicativos, para serem aplicados no código
+Pontos que buscam melhorar a qualidade dos aplicativos, para serem aplicados no código, tendo como objetivo a implementação desses conceitos no código do projeto desse repositório
 
 
-## Clean Code
+## 📋 Clean Code
 
 O principal objetivo do clean code é produzir código legivel, fácil de dar manutenção e que busque reduzir a complexidade
 
-### Funcionalidades
+### Algumuns princípios e práticas
 
 - Nomes significativos
 - Evitar comentários
@@ -36,7 +18,7 @@ O principal objetivo do clean code é produzir código legivel, fácil de dar ma
 
  - [Aprenda como Escrever Código Limpo com o CLEAN CODE](https://www.youtube.com/watch?v=6za9ZWZzWdA)
 
-## Design Pattern
+## 🔧 Design Pattern
 
 Tem como objetivo oferecer abordagens que ajudam os desenvolvedores a criar sistemas mais flexiveis, reutilizáveis e fáceis de Manter
 
@@ -60,26 +42,44 @@ O padrão factory permite com que os desenvolvedores criem objetos que podem ser
 
  - [Criando uma fábrica de AlertDialog e como abrir um Dialog sem contexto](https://www.youtube.com/watch?v=oy9_7fEiBl4&t)
 
-## Clean architecture
+## 📦 Clean architecture
 
 É um conceito que nos trás a idéia de separação do projetos em camadas para torna-las mais idependentes e desacopladas, em que as camadas mais centrais contem as regras de negócio e as pais externas as implementações
 
-- Data: data source, repository, mapper.
+#### Exemplo de estrutura
 
-- Domain: entities, repository, usecases.
-
-- Presentation: widgets, secreens, regras de estado.
+- Data
+  - datasources
+  - repositories
+  - mappers
+- Domain
+    - entities
+    - repositories
+    - usecases
+- Presentation
+    - pages
+    - widgets
+    - controllers
 
 #### Referência
 
  - [Flutter TDD Clean Architecture (Arquitetura Limpa): #1 Pra quê?](https://www.youtube.com/watch?v=odr59ZAx-IU&list=PLnFA4SZ9y0T5FA2dFdNh6NLD6Rm6GB6x7)
 
-## S.O.L.I.D
+## 🎁 S.O.L.I.D
 
 É a junção das inicias de cinco conceitos que, trazem para o código: facilidade de entendimento, reaproveitamento, facilidade de refatoração, testabilidade e poucos bugs
 
-### São eles
+### São eles:
 - S (single responsabilities): Responsabilidade única, quer dizer que uma classe deve tratar apenas de um assunto.
+
+```dart
+abstract class AuthDatasource {
+  Future<UserEntity> login(String email, String password);
+  Future<UserEntity> register(UserEntity user);
+  Future<UserEntity> validateToken(String token);
+}
+```
+Nesse caso, essa classe só trata de casos de autenticação do usuário
 
 - O (open/close): A classe deve ser fechada para modificações e aberta para extensões.
 
@@ -89,6 +89,35 @@ O padrão factory permite com que os desenvolvedores criem objetos que podem ser
 
 - D (dependency inversion): Esse principio nos diz que,as classes que dependem de outras, devem depender da abstração ao invés da classe concreta.
 
+```dart
+class AuthRepositoryImpl implements AuthRepository {
+  final AuthDatasource _authDatasource;
+
+  AuthRepositoryImpl({required AuthDatasource authDatasource})
+      : _authDatasource = authDatasource;
+
+  @override
+  Future<UserEntity> login(String email, String password) {
+    return _authDatasource.login(email, password);
+  }
+
+  @override
+  Future<UserEntity> register(UserEntity user) {
+    return _authDatasource.register(user);
+  }
+
+  @override
+  Future<UserEntity> validateToken(String token) {
+    return _authDatasource.validateToken(token);
+  }
+}
+```
+
+Nesse Exemplo a classe AuthRepositoryImpl depende de AuthDatasource que é uma interface de AuthDatasourceImpl
+
 #### Referência
 
  - [AULÃO - Tudo sobre arquitetura limpa no Flutter](https://www.youtube.com/watch?v=5NAmPRkLgMk&t)
+
+ ---
+⌨️ com ❤️ por [Filipe Haniel](https://github.com/FilipeHaniel) 😊

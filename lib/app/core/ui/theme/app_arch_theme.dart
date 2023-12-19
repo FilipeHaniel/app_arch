@@ -9,6 +9,11 @@ class AppArchTheme {
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.white,
+      titleTextStyle: TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
+        fontSize: 18,
+      ),
       elevation: 0,
       centerTitle: true,
       iconTheme: IconThemeData(color: Colors.black),

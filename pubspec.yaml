@@ -36,6 +36,7 @@ dependencies:
   flutter_feather_icons: ^2.0.0+1
   fluttertoast: ^8.0.8
   asuka: ^2.2.0
+  flutter_secure_storage: ^8.0.0
 
 
   # The following adds the Cupertino Icons font to your application.

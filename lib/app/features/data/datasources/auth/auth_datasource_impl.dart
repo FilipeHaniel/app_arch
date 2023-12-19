@@ -16,7 +16,7 @@ class AuthDatasourceImpl implements AuthDatasource {
   @override
   Future<UserEntity> login(String email, String password) async {
     final response = await _baseRest.restDioRequest(
-      url: ForAppEndpoints.signin,
+      url: ForAppEndpoints.login,
       method: HttpMethods.post,
       body: {
         'email': email,

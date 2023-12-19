@@ -7,6 +7,7 @@ import 'package:app_arch/app/features/domain/usecases/auth/auth_usecase.dart';
 import 'package:app_arch/app/features/domain/usecases/auth/auth_usecase_impl.dart';
 import 'package:app_arch/app/presentation/login/bloc/login_controller.dart';
 import 'package:app_arch/app/presentation/register/bloc/register_controller.dart';
+import 'package:app_arch/app/presentation/splash/bloc/splash_controller.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt getIt = GetIt.instance;
@@ -27,5 +28,7 @@ class AppArchInjection {
     getIt.registerLazySingleton(() => RegisterController(authUsecase: getIt()));
 
     getIt.registerLazySingleton(() => LoginController(authUsecase: getIt()));
+
+    getIt.registerLazySingleton(() => SplashController(authUsecase: getIt()));
   }
 }

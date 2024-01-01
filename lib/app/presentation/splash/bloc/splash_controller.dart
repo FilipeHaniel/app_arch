@@ -28,8 +28,8 @@ class SplashController {
   Stream<SplashState> get outputSplah => _outputSplahController.stream;
 
   Future<void> _validateUserToEnterInApp(SplashEvent event) async {
-    if (event is SplashEventUser) {
-      try {
+    try {
+      if (event is SplashEventUser) {
         final token =
             await _localStorage.getStorageData(key: TokenKeys.userToken);
 
@@ -43,9 +43,14 @@ class SplashController {
         await _authUsecase.validateToken(token);
 
         _outputSplahController.add(SplashStateSuccess());
-      } on Exception catch (e, s) {
-        log('Erro ao carregar user token', error: e, stackTrace: s);
       }
+    } on Exception catch (e, s) {
+      log('Erro ao carregar user token', error: e, stackTrace: s);
     }
+  }
+
+  void dispose() {
+    _inputSplashController.close();
+    _outputSplahController.close();
   }
 }

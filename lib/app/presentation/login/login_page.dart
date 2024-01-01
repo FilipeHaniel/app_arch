@@ -27,27 +27,34 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     _controller = getIt<LoginController>();
+
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<LoginState>(
         stream: _controller.outputLogin,
+        initialData: LoginStateInitial(),
         builder: (context, snapshot) {
           if (snapshot.data is LoginStateSuccess) {
-            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+            Future.delayed(Duration.zero, () {
               AsukaSnackbar.success('Usuário logado com sucesso').show();
-
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                RoutesUrl.home,
-                (route) => false,
-              );
             });
+
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil(RoutesUrl.home, (route) => false);
           }
 
           if (snapshot.data is LoginStateError) {
-            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+            Future.delayed(Duration.zero, () {
               AsukaSnackbar.alert('Falha ao logar no App').show();
             });
           }

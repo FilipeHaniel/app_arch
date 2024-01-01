@@ -5,6 +5,7 @@ import 'package:app_arch/app/features/data/repositories/auth/auth_repository_imp
 import 'package:app_arch/app/features/domain/repositories/auth/auth_repository.dart';
 import 'package:app_arch/app/features/domain/usecases/auth/auth_usecase.dart';
 import 'package:app_arch/app/features/domain/usecases/auth/auth_usecase_impl.dart';
+import 'package:app_arch/app/presentation/home/bloc/home_controller.dart';
 import 'package:app_arch/app/presentation/login/bloc/login_controller.dart';
 import 'package:app_arch/app/presentation/register/bloc/register_controller.dart';
 import 'package:app_arch/app/presentation/splash/bloc/splash_controller.dart';
@@ -30,5 +31,7 @@ class AppArchInjection {
     getIt.registerLazySingleton(() => LoginController(authUsecase: getIt()));
 
     getIt.registerLazySingleton(() => SplashController(authUsecase: getIt()));
+
+    getIt.registerLazySingleton(() => HomeController());
   }
 }

@@ -31,7 +31,7 @@ class _SplashPageState extends State<SplashPage> {
         builder: (context, snapshot) {
           if (snapshot.data is SplashStateSuccess) {
             WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-              Navigator.of(context).pushNamed(RoutesUrl.home);
+              Navigator.of(context).pushReplacementNamed(RoutesUrl.home);
             });
           }
 

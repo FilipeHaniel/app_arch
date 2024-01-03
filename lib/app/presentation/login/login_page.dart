@@ -40,27 +40,20 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<LoginState>(
-        stream: _controller.outputLogin,
-        initialData: LoginStateInitial(),
-        builder: (context, snapshot) {
-          if (snapshot.data is LoginStateSuccess) {
-            Future.delayed(Duration.zero, () {
-              AsukaSnackbar.success('Usuário logado com sucesso').show();
-            });
+    return Scaffold(
+      body: StreamBuilder<Object>(
+          stream: _controller.outputLogin,
+          initialData: LoginStateInitial(),
+          builder: (context, snapshot) {
+            if (snapshot.data is LoginStateSuccess) {
+              _handleLoginSuccess(context);
+            }
 
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil(RoutesUrl.home, (route) => false);
-          }
+            if (snapshot.data is LoginStateError) {
+              _handleLoginError();
+            }
 
-          if (snapshot.data is LoginStateError) {
-            Future.delayed(Duration.zero, () {
-              AsukaSnackbar.alert('Falha ao logar no App').show();
-            });
-          }
-
-          return Scaffold(
-            body: Center(
+            return Center(
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -122,8 +115,26 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-            ),
-          );
-        });
+            );
+          }),
+    );
+  }
+
+  void _handleLoginSuccess(BuildContext context) async {
+    final currentContext = context;
+
+    await Future.delayed(Duration.zero, () {
+      AsukaSnackbar.success('Usuário logado com sucesso').show();
+    });
+
+    Future.delayed(const Duration(milliseconds: 100), () {
+      Navigator.of(currentContext).pushReplacementNamed(RoutesUrl.home);
+    });
+  }
+
+  void _handleLoginError() {
+    Future.delayed(Duration.zero, () {
+      AsukaSnackbar.alert('Falha ao logar no App').show();
+    });
   }
 }
